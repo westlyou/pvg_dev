@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="project_gantt_chart_template_id">
+    <div t-name="ProjectGanttViewAction" class="ProjectGanttViewMain">
+        <div class="container-fluid" style="margin-top:5px;">
+            <div class="row">
+                <div class="col-md-12" style="height:100%;width:100%;padding:0;" id="append_project_gantt_view">
+                    <select class='filter_gantt_view form-control' style="width:100px;margin:5px">
+                        <option value="day">Day</option>
+                        <option value="week">Week</option>
+                        <option value="month">Month</option>
+                        <option value="year">Year</option>
+                    </select>
+                    <span data-project_id="" id="project_id"/>
+                    <div id="project_gantt_view" style='width:100%; height:480px;'></div>
+                </div>
+                <div id="addProjectTask" class="modal fade" role="dialog" tabindex='-1'>
+                    <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <header class="modal-header" style="background-color: #17a2b8;">
+                            <h4 class="modal-title">
+                                <strong style="color:#fff;" id="header_title">Create Task</strong>
+                            </h4>
+                            <button type="button" class="close btn_close" data-dismiss="modal" aria-label="Close" style="color:#fff;">
+                               <i class="fa fa-close"/>
+                            </button>
+                        </header>
+                        <div class="modal-body">
+                            <div class="container">
+                                <label>
+                                    <b id="model_title"></b>
+                                    </label>
+                                    <input type="text" class="activeSaveButton" name="description" placeholder="Enter Task Name" required="required"></input>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <b>Start Date  </b><input name="start_date" type="text" class="start-datepicker col-md-12" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <b>End Date  </b><input name="end_date" type="text" class="end-datepicker col-md-12" disabled="disabled"/>
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <footer class="modal-footer">
+                                <span class="float-left">
+                                    <button name="save" class="save_btn btn btn-info" value="Save" data-dismiss="modal" disabled="disabled">Save</button>
+                                    <button name="close" class="btn btn-default" data-dismiss="modal" aria-label="Close">close</button>
+                                </span>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <t t-extend="ImportView.import_button">
+        <t t-jquery="button.o_button_import" t-operation="before">
+            <t t-if="widget.modelName == 'project.task'">
+                <button type="button" class="btn btn-secondary btn_dhtmlx_gantt_view" accesskey="z">
+                    Gantt View
+                </button>
+            </t>
+        </t>
+        <t t-jquery="button.o_button_import" t-operation="before">
+            <t t-if="widget.modelName == 'project.project'">
+                <button type="button" class="btn btn-secondary btn_dhtmlx_gantt_view" accesskey="z">
+                    Gantt View
+                </button>
+            </t>
+        </t>
+    </t>
+</templates>
+

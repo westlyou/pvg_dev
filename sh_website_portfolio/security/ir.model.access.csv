@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_website_portfolio_category,Access website.portfolio.category,model_website_portfolio_category,,1,0,0,0
+access_website_portfolio,Access website.portfolio,model_website_portfolio,,1,0,0,0
+access_website_portfolio_category_designer,access.website.portfolio.category.designer,model_website_portfolio_category,website.group_website_designer,1,1,1,1
+access_website_portfolio_designer,access.website.portfolio.designer,model_website_portfolio,website.group_website_designer,1,1,1,1

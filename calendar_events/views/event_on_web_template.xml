@@ -1,0 +1,24 @@
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data>
+        <template id="assets_frontend_seller_event_calender" inherit_id="website.assets_frontend" name="Assets Frontend Seller Event Calender">
+			<xpath expr="." position="inside">
+                <link rel="stylesheet" href="/calendar_events/static/src/css/theme2.css" type="text/css"/>
+                <script type="text/javascript" src="/calendar_events/static/src/js/caleandar.js"></script>
+			</xpath>
+	    </template>
+        <template id="inherit_index" inherit_id="website_event.index">
+            <xpath expr="//div[@id='middle_column']" position="attributes">
+                <attribute name="class">col-md-6</attribute>
+            </xpath>
+            <xpath expr="//div[@id='middle_column']" position="after">
+                <div class="col-md-3">
+                    <div id="caleandar">
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

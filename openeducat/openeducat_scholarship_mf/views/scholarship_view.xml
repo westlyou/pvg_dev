@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_op_scholarship_tree" model="ir.ui.view">
+            <field name="name">op.scholarship.tree</field>
+            <field name="model">op.scholarship</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Scholarship">
+                    <field name="name" />
+					<field name="roll_number"/>
+                    <field name="student_id" />
+					<field name="course_id" />
+					 <field name="batch_id" />
+                    <field name="type_id" />
+					<field name="type_amount" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_op_scholarship_form" model="ir.ui.view">
+            <field name="name">op.scholarship.form</field>
+            <field name="model">op.scholarship</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Scholarship">
+                    <header groups="base.group_user">
+                        <button name="act_confirm" states="draft" type="object" string="Confirm" class="oe_highlight"/>
+                        <button name="act_reject" states="draft" type="object" string="Reject" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,reject"/>
+                    </header>
+                    <sheet>
+                        <group colspan="4">
+                            <field name="name" />
+                            <field name="student_id" />
+							  <field name="course_id"/>
+                              <field name="batch_id" domain="[('course_id', '=', course_id)]"/>
+                              <field name="roll_number"/>
+                            <field name="type_id" />
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_op_scholarship_search" model="ir.ui.view">
+            <field name="name">op.scholarship.search</field>
+            <field name="model">op.scholarship</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Scholarship">
+                    <field name="name" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter string="Name" domain="[]" context="{'group_by':'name'}" />
+                        <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
+                        <filter string="State" domain="[]" context="{'group_by':'state'}" />
+						<filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
+						<filter string="Batch" domain="[]" context="{'group_by':'batch_id'}" />
+                        <filter string="Type" domain="[]" context="{'group_by':'type_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_open_op_scholarship_view">
+            <field name="name">Scholarships</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">op.scholarship</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_op_scholarship_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+		        <record model="ir.ui.view" id="view_op_scholarship_graph">
+            <field name="name">op.scholarship.graph</field>
+            <field name="model">op.scholarship</field>
+            <field name="arch" type="xml">
+                <graph string="Scholarship By Type" type="pie">
+                    <field name="type_id" />
+                    <field name="type_amount" operator="+" />
+                </graph>
+            </field>
+        </record>
+		
+		<record model="ir.ui.view" id="view_op_scholarship_pivot">
+            <field name="name">op.scholarship.pivot</field>
+            <field name="model">op.scholarship</field>
+            <field name="arch" type="xml">
+                <pivot string="Scholarship">
+                   <field name="name" />
+					<field name="roll_number"/>
+                    <field name="student_id" type="row"/>
+					<field name="course_id" />
+					 <field name="batch_id" />
+                    <field name="type_id" type="col"/>
+                    <field name="state" />
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_op_scholarship_view_form">
+            <field name="act_window_id" ref="act_open_op_scholarship_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_op_scholarship_form" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_op_scholarship_view_tree">
+            <field name="act_window_id" ref="act_open_op_scholarship_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_op_scholarship_tree" />
+        </record>
+		        <record model="ir.actions.act_window" id="act_open_op_scholarship_view_pivot">
+            <field name="name">Scholarship Analysis</field>
+            <field name="res_model">op.scholarship</field>
+            <field name="view_mode">pivot,graph</field>
+            <field name="view_id" ref="view_op_scholarship_pivot"/>
+        </record>
+    </data>
+</odoo>

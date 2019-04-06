@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="op_scholarship_1" model="op.scholarship">
+            <field name="name">Graduate Scholarship</field>
+            <field name="student_id" ref="openeducat_core.op_student_1" />
+            <field name="type_id" ref="op_scholarship_type_1" />
+			<field name="batch_id" ref="openeducat_core.op_batch_1" />
+			<field name="course_id" ref="openeducat_core.op_course_2" />
+			 <field name="roll_number">123456</field>
+        </record>
+
+        <record id="op_scholarship_2" model="op.scholarship">
+            <field name="name">Military Scholarship</field>
+            <field name="student_id" ref="openeducat_core.op_student_2" />
+            <field name="type_id" ref="op_scholarship_type_2" />
+			<field name="batch_id" ref="openeducat_core.op_batch_2" />
+			<field name="course_id" ref="openeducat_core.op_course_3" />
+			<field name="roll_number">789456</field>
+        </record>
+
+    </data>
+</odoo>

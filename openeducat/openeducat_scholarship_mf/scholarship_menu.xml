@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_op_scholarship_sub" name="Scholarships"
+            parent="openeducat_core.menu_op_school_config_general" sequence="50"
+            action="act_open_op_scholarship_view" groups="openeducat_core.group_op_back_office_admin" />
+        <menuitem id="menu_op_scholarship_type_sub" name="Scholarship Types"
+            parent="openeducat_core.menu_op_school_config_general" sequence="60"
+            action="act_open_op_scholarship_type_view" groups="openeducat_core.group_op_back_office_admin" />
+		<menuitem id="menu_scholarshihp_analysis_report" name="Scholarship Analysis Report"
+            sequence="70"
+            parent="openeducat_core.menu_op_report_main" action="act_open_op_scholarship_view_pivot" />
+    </data>
+</odoo>
